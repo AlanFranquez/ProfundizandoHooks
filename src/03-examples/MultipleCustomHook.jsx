@@ -1,23 +1,19 @@
 
-import { useState } from "react"
-import { useFetch } from "../hooks/useFetch"
+import { LoadingQuote } from '../02-useEffect/LoadingQuote';
+import { Quote } from '../02-useEffect/Quote';
+import {useCounter, useFetch} from '../hooks'
 
 
 export const MultipleCustomHook = () => {
 
-    const [counter, setCounter] = useState(1)
 
-    const sumar = () => {
-        setCounter(counter + 1)
-    }
+    const {counter, incrementar, decrementar } = useCounter(1);
 
     const {state} = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`)
 
     const {isLoading, data, hasError} = state
 
    const {author, quote} = !!data && data[0];
-
-
 
    
 
@@ -27,16 +23,22 @@ export const MultipleCustomHook = () => {
 
         <hr></hr>
 
-        {isLoading ? <p className="text-center alert-info alert">Cargando...</p> : <blockquote className="blockquote text-right">
-            <p className="mb-1">{quote}</p>
-            <footer className="blockquote-footer mt-1">{author}</footer>
-        </blockquote>}
+        {isLoading ? <LoadingQuote /> : <Quote author={author} quote={quote}/>
+        
+            
+        }
+
+
+        {counter > 1 ? <button className="btn btn-secondary" onClick={() => {decrementar(1)}}>&#8592;</button> : null}
+
+        <button disabled={isLoading} onClick={()=> incrementar(1)} className="btn btn-primary">
+                        Next quote
+        </button>
 
         
-        <button onClick={sumar} className="btn btn-primary">
-            next quote
 
-        </button>
+        
+        
 
     </>
   )
