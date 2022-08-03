@@ -1,6 +1,5 @@
 
-import { LoadingQuote } from '../02-useEffect/LoadingQuote';
-import { Quote } from '../02-useEffect/Quote';
+import { Quote, LoadingQuote } from './';
 import {useCounter, useFetch} from '../hooks'
 
 
@@ -32,7 +31,7 @@ export const MultipleCustomHook = () => {
         {counter > 1 ? <button className="btn btn-secondary" onClick={() => {decrementar(1)}}>&#8592;</button> : null}
 
         <button disabled={isLoading} onClick={()=> incrementar(1)} className="btn btn-primary">
-                        Next quote
+            Next quote
         </button>
 
         
