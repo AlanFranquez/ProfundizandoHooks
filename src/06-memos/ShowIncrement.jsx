@@ -1,24 +1,20 @@
-import { useCallback } from "react"
+import { memo } from "react"
 
 
-export const ShowIncrement = ({increment, counter}) => {
 
-    // Es similar al useMemo pero sirve para memorizar funciones, ya que estás están en diferentes lugar que los objetos
-    useCallback(
-      () => {
-        first
-      },
-      [second],
-    )
+
+export const ShowIncrement = memo(({increment}) => {
+
+    
     
 
-    console.log('Me volvi a generar')
+    console.log('Nos recibimoooooooooo')
 
   return (
-    <button className="btn btn-primary" onClick={() => {increment()}}>
+    <button className="btn btn-primary" onClick={() => {increment(5)}}>
 
         Increment
 
     </button>
   )
-}
+})
