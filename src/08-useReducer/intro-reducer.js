@@ -1,6 +1,7 @@
 
 
 
+
 const initialState = [{
     id: 1,
     todo: 'Recolectar la piedra del Alma',
@@ -8,7 +9,7 @@ const initialState = [{
 }];
 
 
-
+// Reducer tiene 2 argumentos
 const todoReducer = (state = initialState, action = {}) => {
 
     if(action.type === '[TODO] add todo') {
@@ -33,12 +34,14 @@ const newTodo = {
 
 const nuevaAccion = {
     type: '[TODO] add todo',
-    payload: newTodo
+    payload: newTodo,
 }
 
+// Primero el estado anterior y luego la acción
 todos = todoReducer(todos, nuevaAccion)
 
-console.log({todos})
+console.log({state: todos})
+
 
 
 
