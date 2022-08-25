@@ -24,12 +24,9 @@ export const TodoApp = () => {
 
 
     const handleNewTodo = (e) => {
-      const action = {
-        type: '[TODO] Add Todo',
-        payload: e
-      };
+      console.log(e)
 
-      dispatch(action);
+    //   dispatch(action);
     }
 
     return (

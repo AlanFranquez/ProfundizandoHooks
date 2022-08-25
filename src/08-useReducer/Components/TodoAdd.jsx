@@ -27,18 +27,16 @@ export const TodoAdd = ({onNewTodo}) => {
             return;
         };
 
-        setError(false)
+        setError(false);
 
-        // Asignar los valores a un objeto
-        const newTodo = {
+        //Asignamos el valor a descripción y luego en al función de onNewtodo se pasa al componoente padre
+        const newDato = {
             id: new Date().getTime(),
             description: description,
             done: false
         };
 
-
-        // Asignar los valores a la prop que lo manda como arguemtno en una funcion de <TodoApp/>
-        onNewTodo(newTodo)
+        onNewTodo(newDato);
         onReset()
     }
 
