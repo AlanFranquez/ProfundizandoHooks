@@ -23,10 +23,19 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, initialState)
 
 
-    const handleNewTodo = (e) => {
-      console.log(e)
+    console.log(todos)
 
-    //   dispatch(action);
+    const handleNewTodo = (e) => {
+    
+        const action = {
+            // el type debe tener el mismo nombre que el case
+            type: '[TODO] Add Todo',
+            payload: e
+        };
+
+        // Le mandamos la acción al reducer
+        dispatch(action)
+    
     }
 
     return (
@@ -37,6 +46,7 @@ export const TodoApp = () => {
             <div className="row">
                 <div className="col-7">
                     <TodoList todos={todos}/>
+                    
                 </div>
 
                 <div className="col-5">

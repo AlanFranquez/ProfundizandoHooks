@@ -16,28 +16,27 @@ export const TodoAdd = ({onNewTodo}) => {
 
 
     const enviarTodo = (e) => {
-        e.preventDefault();
+       e.preventDefault();
 
-        if(description === '') {
-            setError(true)
-
+       if(description === '') {
+            setError(true);
             setTimeout(() => {
                 setError(false)
-            }, 2000);
+            }, 3000);
+
             return;
-        };
+       };
 
-        setError(false);
+       setError(false);
 
-        //Asignamos el valor a descripción y luego en al función de onNewtodo se pasa al componoente padre
-        const newDato = {
+       const newITEM = {
             id: new Date().getTime(),
             description: description,
             done: false
         };
 
-        onNewTodo(newDato);
-        onReset()
+        onNewTodo(newITEM)
+        onReset();
     }
 
   return (

@@ -1,12 +1,12 @@
 import { TodoItem } from "./TodoItem"
 
 
-export const TodoList = ({todos}) => {
+export const TodoList = ({todos = []}) => {
   return (
     <ul className="list-group">
       {
         todos.map((todo) => {
-            <TodoItem todo={todo} key={todo.id}/>
+            return <TodoItem todo={todo} key={todo.id}/>
         })
       }
 
