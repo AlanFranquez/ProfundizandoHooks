@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useReducer } from "react"
 import { TodoAdd } from "./Components/TodoAdd"
 import { TodoList } from "./Components/TodoList"
@@ -6,21 +7,33 @@ import { TodoList } from "./Components/TodoList"
 import { todoReducer } from "./todoReducer"
 
 const initialState = [
-    {
-        id: new Date().getTime(),
-        description: 'Recolectar la piedra del alma',
-        done: false
-    },
-    {
-        id: new Date().getTime() + 100,
-        description: 'Recolectar la piedra del tiempo',
-        done: false
-    },
-]
+    // {
+    //     id: new Date().getTime(),
+    //     description: 'Recolectar la piedra del alma',
+    //     done: false
+    // },
+    // {
+    //     id: new Date().getTime() + 100,
+    //     description: 'Recolectar la piedra del tiempo',
+    //     done: false
+    // },
+];
+
+const init = () => {
+    return JSON.parse(localStorage.getItem('todos') || []); // Si es nulo regresa un arreglo vació
+}
 
 export const TodoApp = () => {
 
-    const [todos, dispatch] = useReducer(todoReducer, initialState)
+    const [todos, dispatch] = useReducer(todoReducer, initialState, init);
+
+    useEffect(() => {
+
+        // Traerlo a string
+        localStorage.setItem('todos', JSON.stringify(todos));
+      
+    }, [todos])
+    
 
 
     console.log(todos)
@@ -36,6 +49,22 @@ export const TodoApp = () => {
         // Le mandamos la acción al reducer
         dispatch(action)
     
+    };
+
+    const handleDeleteTodo = (id) => {
+        // console.log(id)
+        dispatch({
+            type: '[TODO] Remove Todo',
+            payload: id
+        });
+    }
+
+    const handleToggleTodo = (id) => {
+        console.log(id)
+        dispatch({
+            type: '[TODO] Toggle Todo',
+            payload: id
+        });
     }
 
     return (
@@ -45,7 +74,7 @@ export const TodoApp = () => {
 
             <div className="row">
                 <div className="col-7">
-                    <TodoList todos={todos}/>
+                    <TodoList todos={todos} onDeleteTodo={handleDeleteTodo} onToggleTodo={handleToggleTodo}/>
                     
                 </div>
 
