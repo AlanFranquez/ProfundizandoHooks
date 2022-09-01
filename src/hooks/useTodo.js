@@ -45,12 +45,19 @@ export const useTodo = () => {
         });
     }
 
+    const countTodos = todos.length;
+    const pendingTodos = todos.filter((todo) => {
+        return !todo.done
+    }).length;
+
 
   return {
         handleToggleTodo,
         handleNewTodo,
         handleDeleteTodo,
         todos,
-        dispatch
+        dispatch,
+        countTodos,
+        pendingTodos
   }
 }

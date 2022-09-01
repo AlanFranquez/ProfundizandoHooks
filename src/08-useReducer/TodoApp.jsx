@@ -14,13 +14,14 @@ export const TodoApp = () => {
         handleNewTodo,
         handleDeleteTodo,
         todos,
-        dispatch} = useTodo()
+        countTodos,
+        pendingTodos} = useTodo()
 
     
 
     return (
         <>
-            <h1>TodoApp: {todos.length}</h1>
+            <h1>TodoApp: {countTodos} <small>Pendientes: {pendingTodos}</small></h1>
             <hr></hr>
 
             <div className="row">
