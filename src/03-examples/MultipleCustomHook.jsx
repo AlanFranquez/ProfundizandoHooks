@@ -8,9 +8,8 @@ export const MultipleCustomHook = () => {
 
     const {counter, incrementar, decrementar } = useCounter(1);
 
-    const {state} = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`)
+    const {isLoading, data, hasError} = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`)
 
-    const {isLoading, data, hasError} = state
 
    const {author, quote} = !!data && data[0];
 

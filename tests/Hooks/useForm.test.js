@@ -36,17 +36,14 @@ describe('Pruebas en el useForm', () => {
         const target = {
             name: 'name',
             value: newValue
-        }
-
-        // const newValue = 'Juan'
+        };
 
         act(() => {
-            onInputChange({target});
+            onInputChange({target})
         });
 
-
-
-       expect(result.current.formState.name).toBe(newValue)
+        console.log(result.current)
+        expect(result.current.formState.name).toBe(newValue);
     });
 
 
@@ -60,7 +57,7 @@ describe('Pruebas en el useForm', () => {
 
         const target = {
             name: 'name',
-            value: 'Juan'
+            value: newValue
         }
 
         // const newValue = 'Juan'
@@ -73,7 +70,7 @@ describe('Pruebas en el useForm', () => {
 
 
 
-       expect(result.current.formState.name).toBe('Alan')
+       expect(result.current.formState.name).toBe(intialForm.name)
     })
 
 })
